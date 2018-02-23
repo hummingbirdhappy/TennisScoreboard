@@ -15,6 +15,16 @@ public class MainActivity extends AppCompatActivity {
     int scorePlayer2 = 0;
     int setScorePlayer1 = 0;
     int setScorePlayer2 = 0;
+    int set1FinalScorePlayer1 = 0;
+    int set1FinalScorePlayer2 = 0;
+    int set2FinalScorePlayer1 = 0;
+    int set2FinalScorePlayer2 = 0;
+    int set3FinalScorePlayer1 = 0;
+    int set3FinalScorePlayer2 = 0;
+    int set4FinalScorePlayer1 = 0;
+    int set4FinalScorePlayer2 = 0;
+    int set5FinalScorePlayer1 = 0;
+    int set5FinalScorePlayer2 = 0;
     int setNumber = 1;
 
     @Override
@@ -27,15 +37,29 @@ public class MainActivity extends AppCompatActivity {
             setScorePlayer1 = savedInstanceState.getInt("setScorePlayer1");
             setScorePlayer2 = savedInstanceState.getInt("setScorePlayer2");
             setNumber = savedInstanceState.getInt("setNumber");
+            set1FinalScorePlayer1 = savedInstanceState.getInt("set1FinalScorePlayer1");
+            set2FinalScorePlayer1 = savedInstanceState.getInt("set2FinalScorePlayer1");
+            set3FinalScorePlayer1 = savedInstanceState.getInt("set3FinalScorePlayer1");
+            set4FinalScorePlayer1 = savedInstanceState.getInt("set4FinalScorePlayer1");
+            set5FinalScorePlayer1 = savedInstanceState.getInt("set5FinalScorePlayer1");
+            set1FinalScorePlayer2 = savedInstanceState.getInt("set1FinalScorePlayer2");
+            set2FinalScorePlayer2 = savedInstanceState.getInt("set2FinalScorePlayer2");
+            set3FinalScorePlayer2 = savedInstanceState.getInt("set3FinalScorePlayer2");
+            set4FinalScorePlayer2 = savedInstanceState.getInt("set4FinalScorePlayer2");
+            set5FinalScorePlayer2 = savedInstanceState.getInt("set5FinalScorePlayer2");
         }
         setContentView(R.layout.activity_main);
         // display initial or current scores
         displayForPlayer1(scorePlayer1);
         displayForPlayer2(scorePlayer2);
-        // display initial or current set scores
+        // display all previous set scores
+        displayFinalSetScoresPlayer1(set1FinalScorePlayer1,set2FinalScorePlayer1,
+                set3FinalScorePlayer1,set4FinalScorePlayer1,set5FinalScorePlayer1);
+        displayFinalSetScoresPlayer2(set1FinalScorePlayer2,set2FinalScorePlayer2,
+                set3FinalScorePlayer2,set4FinalScorePlayer2,set5FinalScorePlayer2);
+        // display current set scores
         displayPlayer1SetScore(setScorePlayer1);
         displayPlayer2SetScore(setScorePlayer2);
-
     }
     /*
     *Save UI state changes to the savedInstanceState.
@@ -50,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
         vars.putInt("setScorePlayer1",setScorePlayer1);
         vars.putInt("setScorePlayer2",setScorePlayer2);
         vars.putInt("setNumber",setNumber);
+        vars.putInt("set1FinalScorePlayer1",set1FinalScorePlayer1);
+        vars.putInt("set2FinalScorePlayer1",set2FinalScorePlayer1);
+        vars.putInt("set3FinalScorePlayer1",set3FinalScorePlayer1);
+        vars.putInt("set4FinalScorePlayer1",set4FinalScorePlayer1);
+        vars.putInt("set5FinalScorePlayer1",set5FinalScorePlayer1);
+        vars.putInt("set1FinalScorePlayer2",set1FinalScorePlayer2);
+        vars.putInt("set2FinalScorePlayer2",set2FinalScorePlayer2);
+        vars.putInt("set3FinalScorePlayer2",set3FinalScorePlayer2);
+        vars.putInt("set4FinalScorePlayer2",set4FinalScorePlayer2);
+        vars.putInt("set5FinalScorePlayer2",set5FinalScorePlayer2);
     }
 
     /**
@@ -138,6 +172,40 @@ public class MainActivity extends AppCompatActivity {
             scoreView.setText(String.format(String.valueOf(score)));
         }
     }
+    /*
+    * This method displays the final score of each set for Player 1
+     */
+    public void displayFinalSetScoresPlayer1(int score1, int score2, int score3, int score4,
+                                             int score5){
+            TextView score1View = (TextView) findViewById(R.id.player1_set1_score);
+            score1View.setText(String.format(String.valueOf(score1)));
+            TextView score2View = (TextView) findViewById(R.id.player1_set2_score);
+            score2View.setText(String.format(String.valueOf(score2)));
+            TextView score3View = (TextView) findViewById(R.id.player1_set3_score);
+            score3View.setText(String.format(String.valueOf(score3)));
+            TextView score4View = (TextView) findViewById(R.id.player1_set4_score);
+            score4View.setText(String.format(String.valueOf(score4)));
+            TextView score5View = (TextView) findViewById(R.id.player1_set5_score);
+            score5View.setText(String.format(String.valueOf(score5)));
+    }
+
+    /*
+    * This method displays the final score of each set for Player 2
+     */
+    public void displayFinalSetScoresPlayer2(int score1, int score2, int score3, int score4,
+                                             int score5){
+            TextView score1View = (TextView) findViewById(R.id.player2_set1_score);
+            score1View.setText(String.format(String.valueOf(score1)));
+            TextView score2View = (TextView) findViewById(R.id.player2_set2_score);
+            score2View.setText(String.format(String.valueOf(score2)));
+            TextView score3View = (TextView) findViewById(R.id.player2_set3_score);
+            score3View.setText(String.format(String.valueOf(score3)));
+            TextView score4View = (TextView) findViewById(R.id.player2_set4_score);
+            score4View.setText(String.format(String.valueOf(score4)));
+            TextView score5View = (TextView) findViewById(R.id.player2_set5_score);
+            score5View.setText(String.format(String.valueOf(score5)));
+    }
+
     /**
      * This method increases the score of Player 1 by 1 point.
      */
@@ -269,13 +337,53 @@ public class MainActivity extends AppCompatActivity {
     public void testSetNumber(){
         if ((setScorePlayer1==6 && setScorePlayer1 - setScorePlayer2>=2) ||
                 (setScorePlayer2==6 && setScorePlayer2 - setScorePlayer1>=2)){
-            setNumber = setNumber + 1;
+            if (setNumber==1) {
+                set1FinalScorePlayer1 = setScorePlayer1; // records the final set score
+                set1FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==2) {
+                set2FinalScorePlayer1 = setScorePlayer1;
+                set2FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==3) {
+                set3FinalScorePlayer1 = setScorePlayer1;
+                set3FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==4) {
+                set4FinalScorePlayer1 = setScorePlayer1;
+                set4FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==5) {
+                set5FinalScorePlayer1 = setScorePlayer1;
+                set5FinalScorePlayer2 = setScorePlayer2;
+            }
+            setNumber = setNumber + 1; // begins a new set
             setScorePlayer1 = 0;
             setScorePlayer2 = 0;
         }
         else if ((setScorePlayer1==7 && setScorePlayer1 - setScorePlayer2<=2) ||
                 (setScorePlayer2==7 && setScorePlayer2 - setScorePlayer1<=2)) {
-            setNumber = setNumber + 1;
+            if (setNumber==1) {
+                set1FinalScorePlayer1 = setScorePlayer1; // records the final set score
+                set1FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==2) {
+                set2FinalScorePlayer1 = setScorePlayer1;
+                set2FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==3) {
+                set3FinalScorePlayer1 = setScorePlayer1;
+                set3FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==4) {
+                set4FinalScorePlayer1 = setScorePlayer1;
+                set4FinalScorePlayer2 = setScorePlayer2;
+            }
+            if (setNumber==5) {
+                set5FinalScorePlayer1 = setScorePlayer1;
+                set5FinalScorePlayer2 = setScorePlayer2;
+            }
+            setNumber = setNumber + 1; // begins a new set
             setScorePlayer1 = 0;
             setScorePlayer2 = 0;
         }
