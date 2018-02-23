@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:context="com.example.android.courtcounter.MainActivity">
+
+            <TextView
+                android:id="@+id/name_player1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/name_padding"
+                android:text="@string/player1_name"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/name_text_size" />
+
+            <TextView
+                android:id="@+id/player1_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/score_padding_land"
+                android:text="@string/start_game_score"
+                android:textColor="#000000"
+                android:textSize="@dimen/score_text_size_land" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="@dimen/button_width"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/button_margin_vertical_land"
+                        android:layout_marginTop="@dimen/button_margin_vertical_land"
+                        android:background="@drawable/round_button"
+                        android:onClick="subtractPointPlayer1"
+                        android:text="@string/decrement" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="@dimen/button_width"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/button_margin_vertical_land"
+                        android:layout_marginTop="@dimen/button_margin_vertical_land"
+                        android:background="@drawable/round_button"
+                        android:onClick="addPointPlayer1"
+                        android:text="@string/increment" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:context="com.example.android.courtcounter.MainActivity">
+
+            <TextView
+                android:id="@+id/name_player2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/name_padding"
+                android:text="@string/player2_name"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/name_text_size" />
+
+            <TextView
+                android:id="@+id/player2_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/score_padding_land"
+                android:text="@string/start_game_score"
+                android:textColor="#000000"
+                android:textSize="@dimen/score_text_size_land" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="@dimen/button_width"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/button_margin_vertical_land"
+                        android:layout_marginTop="@dimen/button_margin_vertical_land"
+                        android:background="@drawable/round_button"
+                        android:onClick="subtractPointPlayer2"
+                        android:text="@string/decrement" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="@dimen/button_width"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/button_margin_vertical_land"
+                        android:layout_marginTop="@dimen/button_margin_vertical_land"
+                        android:background="@drawable/round_button"
+                        android:onClick="addPointPlayer2"
+                        android:text="@string/increment" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:stretchColumns="0,1,2,3,4,5">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@android:color/darker_gray" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:padding="@dimen/name_padding"
+                android:text="@string/player1_name"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/name_text_size"/>
+
+            <TextView
+                android:id="@+id/player1_set1_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player1_set2_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player1_set3_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player1_set4_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player1_set5_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@android:color/darker_gray" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:padding="@dimen/name_padding"
+                android:text="@string/player2_name"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/name_text_size"/>
+
+            <TextView
+                android:id="@+id/player2_set1_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player2_set2_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player2_set3_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player2_set4_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+
+            <TextView
+                android:id="@+id/player2_set5_score"
+                android:gravity="center"
+                android:padding="@dimen/set_score_padding"
+                android:text="@string/start_set_score" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@android:color/darker_gray" />
+    </TableLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="resetMatchScore"
+            android:text="@string/reset_match"
+            android:layout_marginTop="@dimen/button_margin_vertical_land"
+            android:layout_marginBottom="@dimen/button_margin_vertical_land"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary theme color of the app (sets background color of app bar) -->
+        <item name="colorPrimary">#004F92</item>
+        <!--  Color for player names in the app-->
+        <item name="colorAccent">#32A3DF</item>
+        <!-- Background color of buttons in the app -->
+        <item name="colorButtonNormal">#99C941</item>
+    </style>
+</resources>
