@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.tennisscoreboard.R;
 
@@ -25,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
     int set4FinalScorePlayer2 = 0;
     int set5FinalScorePlayer1 = 0;
     int set5FinalScorePlayer2 = 0;
+    int matchScorePlayer1 = 0;
+    int matchScorePlayer2 = 0;
     int setNumber = 1;
+
+    String winner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             set3FinalScorePlayer2 = savedInstanceState.getInt("set3FinalScorePlayer2");
             set4FinalScorePlayer2 = savedInstanceState.getInt("set4FinalScorePlayer2");
             set5FinalScorePlayer2 = savedInstanceState.getInt("set5FinalScorePlayer2");
+            matchScorePlayer1 = savedInstanceState.getInt("matchScorePlayer1");
+            matchScorePlayer2 = savedInstanceState.getInt("matchScorePlayer2");
         }
         setContentView(R.layout.activity_main);
         // display initial or current scores
@@ -84,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         vars.putInt("set3FinalScorePlayer2",set3FinalScorePlayer2);
         vars.putInt("set4FinalScorePlayer2",set4FinalScorePlayer2);
         vars.putInt("set5FinalScorePlayer2",set5FinalScorePlayer2);
+        vars.putInt("matchScorePlayer1",matchScorePlayer1);
+        vars.putInt("matchScorePlayer2",matchScorePlayer2);
     }
 
     /**
@@ -389,7 +398,56 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void getMatchScore(){
+        if (set1FinalScorePlayer1 > set1FinalScorePlayer2){
+            matchScorePlayer1 = matchScorePlayer1 + 1;
+        }
+        else if (set1FinalScorePlayer2 > set1FinalScorePlayer1){
+            matchScorePlayer2 = matchScorePlayer2 + 1;
+        }
+        if (set2FinalScorePlayer1 > set2FinalScorePlayer2){
+            matchScorePlayer1 = matchScorePlayer1 + 1;
+        }
+        else if (set2FinalScorePlayer2 > set2FinalScorePlayer1){
+            matchScorePlayer2 = matchScorePlayer2 + 1;
+        }
+        if (set3FinalScorePlayer1 > set3FinalScorePlayer2){
+            matchScorePlayer1 = matchScorePlayer1 + 1;
+        }
+        else if (set3FinalScorePlayer2 > set3FinalScorePlayer1){
+            matchScorePlayer2 = matchScorePlayer2 + 1;
+        }
+        if (set4FinalScorePlayer1 > set4FinalScorePlayer2){
+            matchScorePlayer1 = matchScorePlayer1 + 1;
+        }
+        else if (set4FinalScorePlayer2 > set4FinalScorePlayer1){
+            matchScorePlayer2 = matchScorePlayer2 + 1;
+        }
+        if (set5FinalScorePlayer1 > set5FinalScorePlayer2){
+            matchScorePlayer1 = matchScorePlayer1 + 1;
+        }
+        else if (set5FinalScorePlayer2 > set5FinalScorePlayer1){
+            matchScorePlayer2 = matchScorePlayer2 + 1;
+        }
+        // decides who the winner is
+        if (matchScorePlayer1 > matchScorePlayer2){
+            winner = "Player 1";
+        }
+        else if (matchScorePlayer2 > matchScorePlayer1){
+            winner = "Player 2";
+        }
+        else if (matchScorePlayer1==matchScorePlayer2){
+            winner = "Tie";
+        }
+        // makes a toast indicating the winner
+        Toast.makeText(this, "The winner is " + winner + "!",
+                Toast.LENGTH_LONG).show();
+    }
+
     public void resetMatchScore(View view){
+        // displays a toasts indicating the winner
+        getMatchScore();
+        // resets all values
         scorePlayer1 = 0;
         scorePlayer2 = 0;
         displayForPlayer1(scorePlayer1);
@@ -402,5 +460,8 @@ public class MainActivity extends AppCompatActivity {
             displayPlayer2SetScore(setScorePlayer2);
         }
         setNumber = 1;
+        matchScorePlayer1 = 0;
+        matchScorePlayer2 = 0;
+        winner = "";
     }
 }
