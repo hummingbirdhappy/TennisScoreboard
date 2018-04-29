@@ -460,6 +460,16 @@ public class MainActivity extends AppCompatActivity {
             displayPlayer2SetScore(setScorePlayer2);
         }
         setNumber = 1;
+        set1FinalScorePlayer1 = 0;
+        set1FinalScorePlayer2 = 0;
+        set2FinalScorePlayer1 = 0;
+        set2FinalScorePlayer2 = 0;
+        set3FinalScorePlayer1 = 0;
+        set3FinalScorePlayer2 = 0;
+        set4FinalScorePlayer1 = 0;
+        set4FinalScorePlayer2 = 0;
+        set5FinalScorePlayer1 = 0;
+        set5FinalScorePlayer2 = 0;
         matchScorePlayer1 = 0;
         matchScorePlayer2 = 0;
         winner = "";
