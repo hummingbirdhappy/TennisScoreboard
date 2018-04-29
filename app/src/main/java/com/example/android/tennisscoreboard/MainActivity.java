@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    * This method displays the new set score for Player 1.
+    * This method displays the new set score for Player 2.
      */
     public void displayPlayer2SetScore(int score) {
         if (setNumber==1) {
